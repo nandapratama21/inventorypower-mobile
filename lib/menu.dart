@@ -4,9 +4,9 @@ class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
 
   final List<ShopItem> items = [
-    ShopItem("Lihat Item", Icons.checklist, Colors.blue),
-    ShopItem("Tambah Item", Icons.add_shopping_cart, Colors.yellow),
-    ShopItem("Logout", Icons.logout, Colors.green),
+    ShopItem("Lihat Item", Icons.checklist, Colors.blue,1),
+    ShopItem("Tambah Item", Icons.add_shopping_cart, Colors.yellow,2),
+    ShopItem("Logout", Icons.logout, Colors.green,3),
   ];
 
   @override
@@ -62,8 +62,9 @@ class ShopItem {
   final String name;
   final IconData icon;
   final Color color;
+  final int value;
 
-  ShopItem(this.name, this.icon, this.color);
+  ShopItem(this.name, this.icon, this.color,this.value);
 }
 
 class ShopCard extends StatelessWidget {
@@ -91,6 +92,10 @@ class ShopCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                      Text (
+                  item.value.toString(),
+                  style: const TextStyle(color: Colors.white),
+                ),
                 Icon(
                   item.icon,
                   color: Colors.white,
