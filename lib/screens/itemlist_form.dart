@@ -13,6 +13,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
   final _formKey = GlobalKey<FormState>();
 
   String _name = "";
+  int _amount = 0;
   int _price = 0;
   String _description = "";
 
@@ -52,6 +53,32 @@ class _ShopFormPageState extends State<ShopFormPage> {
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
                     return "Nama tidak boleh kosong!";
+                  }
+                  return null;
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  hintText: "Jumlah",
+                  labelText: "Jumlah",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                ),
+                onChanged: (String? value) {
+                  setState(() {
+                    _amount = int.parse(value!);
+                  });
+                },
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return "Jumlah tidak boleh kosong!";
+                  }
+                  if (int.tryParse(value) == null) {
+                    return "Jumlah harus berupa angka!";
                   }
                   return null;
                 },
@@ -116,7 +143,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      Item newItem = Item(_name, _price, _description);
+                      Item newItem = Item(_name, _amount, _price, _description);
                       Item.itemList.add(newItem);
                       showDialog(
                         context: context,
@@ -128,6 +155,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text('Nama: $_name'),
+                                  Text('Jumlah: $_amount'),
                                   Text('Harga: $_price'),
                                   Text('Deskripsi: $_description'),
                                 ],

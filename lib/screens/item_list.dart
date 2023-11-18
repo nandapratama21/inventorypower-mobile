@@ -34,6 +34,7 @@ class ItemListPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Nama: ${currentItem.name}'),
+                          Text('Jumlah: ${currentItem.amount}'),
                           Text('Harga: ${currentItem.price}'),
                           Text('Deskripsi: ${currentItem.description}'),
                         ],
