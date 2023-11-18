@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inventorypower/screens/menu.dart';
-import 'package:inventorypower/screens/shoplist_form.dart';
+import 'package:inventorypower/screens/itemlist_form.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -17,7 +17,7 @@ class LeftDrawer extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Shopping List',
+                  'Inventory Power',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
@@ -27,7 +27,7 @@ class LeftDrawer extends StatelessWidget {
                 ),
                 Padding(padding: EdgeInsets.all(10)),
                 Text(
-                  "Catat seluruh keperluan belanjamu di sini!",
+                  "Tambahkan itemmu disini!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 15,
@@ -53,7 +53,7 @@ class LeftDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Tambah Produk'),
+            title: const Text('Tambah Item'),
             // Bagian redirection ke ShopFormPage
             onTap: () {
               Navigator.pushReplacement(

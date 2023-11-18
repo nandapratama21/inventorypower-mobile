@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_list/screens/shoplist_form.dart';
+import 'package:inventorypower/screens/item_list.dart';
+import 'package:inventorypower/screens/itemlist_form.dart';
 
 class ShopItem {
   final String name;
   final IconData icon;
+  final Color color;
+  final int value;
 
-  ShopItem(this.name, this.icon);
+  ShopItem(this.name, this.icon, this.color, this.value);
+  void onTap(BuildContext context) {
+    if (name == "Lihat Item") {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ItemListPage(),
+          ));
+    } else if (name == "Tambah Item") {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ShopFormPage(),
+          ));
+    }
+  }
 }
 
 class ShopCard extends StatelessWidget {
@@ -16,7 +34,7 @@ class ShopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.indigo,
+      color: item.color,
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () {
@@ -25,12 +43,7 @@ class ShopCard extends StatelessWidget {
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
-
-          // Navigate ke route yang sesuai (tergantung jenis tombol)
-          if (item.name == "Tambah Produk") {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ShopFormPage()));
-          }
+          item.onTap(context);
         },
         child: Container(
           // Container untuk menyimpan Icon dan Text
@@ -39,6 +52,10 @@ class ShopCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Text(
+                  item.value.toString(),
+                  style: const TextStyle(color: Colors.white),
+                ),
                 Icon(
                   item.icon,
                   color: Colors.white,
