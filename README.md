@@ -63,3 +63,45 @@ Jawaban:
  - Mengarahkan pengguna ke halaman form tambah item baru ketika menekan tombol Tambah Item pada halaman utama: Saya menggunakan cara yang mirip seperti tutorial.  
  - Memunculkan data sesuai isi dari formulir yang diisi dalam sebuah pop-up setelah menekan tombol Save pada halaman formulir tambah item baru: Caranya mirip dengan tutorial.  
  - Membuat sebuah drawer pada aplikasi: Caranya mirip dengan tutorial
+
+
+ TUGAS 9
+
+ 1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?  
+ Jawaban: emungkinkan untuk mengambil data JSON tanpa membuat model terlebih dahulu. Namun, apakah hal ini lebih baik atau tidak tergantung pada kompleksitas data dan kebutuhan aplikasi. Jika struktur data JSON sederhana dan dapat langsung digunakan, tanpa perlu transformasi khusus, maka pengambilan data tanpa membuat model terlebih dahulu bisa lebih efisien. Namun, jika data kompleks atau memerlukan transformasi tertentu, lebih disarankan untuk membuat model terlebih dahulu agar pengelolaan data menjadi lebih terstruktur dan mudah dipahami. Jadi, pilihan antara kedua pendekatan tersebut tergantung pada konteks aplikasi dan kompleksitas data yang dihadapi.  
+
+ 2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.  
+ Jawaban: CookieRequest berfungsi untuk melakukan permintaan HTTP seperti GET DAN POST, untuk mengatur login dan logout. CookieRequest perlu dibagikan ke semua komponen di aplikasi Flutter karena dapat berkaitan dengan kebutuhan untuk menyimpan dan mengelola cookie di seluruh aplikasi.  
+
+ 3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.  
+ Jawaban: Membuat model khusus dengan menggunakan website Quicktype untuk menghasilkan struktur data JSON dari endpoint /json dalam proyek Django.
+
+Menambahkan dependensi HTTP ke proyek Flutter dengan menyertakan dependensi http dan menyesuaikan kode di dalam android/app/src/main/AndroidManifest.xml agar mengizinkan akses internet.
+
+Melakukan pengambilan data dengan menggunakan fungsi asinkronus pada salah satu file di direktori lib/screens yang perlu mengambil data.  
+
+4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.  
+Jawaban:   
+- Pengguna memasukkan username dan password pada halaman LoginPage.
+
+- Setelah menekan tombol login, fungsi login pada CookieRequest dipanggil, yang mengirimkan permintaan HTTP dengan menggunakan endpoint URL auth/login pada proyek Django.
+
+- Pada sisi Django, proses autentikasi dilakukan, misalnya dengan menggunakan pernyataan seperti authenticate(username=username, password=password) di dalam views.py bagian otentikasi.
+
+- Kemudian, dilakukan pemeriksaan status pengguna, seperti apakah user is not None dan user.is_active?
+
+5. Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.  
+Jawaban: 
+
+ - ListView: ListView adalah _layout_ widget yang dapat digunakan untuk membuat _list_ _scrollable_.  
+ - Stack: Stack adalah _layout_ widget yang dapat digunakan untuk menumpuk elemen dari bawah ke atas.
+  - Container: Container adalah _layout_ widget yang dapat digunakan untuk diisi dengan dekorasi,_padding_, _margin_,dan _child_ di dalam Container tersebut. 
+
+6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).  
+Jawaban: 
+- Memastikan deployment proyek tugas Django kamu telah berjalan dengan baik: Saya sudah memeriksanya.
+- Membuat halaman login pada proyek tugas Flutter: Saya sudah membuatnya.
+- Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter: Saya mengikuti cara di tutorial.
+- Membuat model kustom sesuai dengan proyek aplikasi Django: Saya mengikuti cara di tutorial disesuaikan dengan aplikasi saya.
+- Membuat halaman yang berisi daftar semua item yang terdapat pada endpoint JSON di Django yang telah kamu deploy: Saya sudah melakukannya mirip dengan tutorial
+- Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item: Saya sudah melakukannya dan memeriksanya.

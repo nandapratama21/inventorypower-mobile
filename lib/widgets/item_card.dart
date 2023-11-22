@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:inventorypower/screens/item_list.dart';
 import 'package:inventorypower/screens/itemlist_form.dart';
+import 'dart:convert';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class ShopItem {
   final String name;
@@ -33,6 +35,7 @@ class ShopCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Material(
       color: item.color,
       child: InkWell(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:inventorypower/widgets/left_drawer.dart';
 import 'package:inventorypower/models/item.dart';
+import 'dart:convert';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class ShopFormPage extends StatefulWidget {
   const ShopFormPage({super.key});
@@ -19,6 +21,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
         title: const Center(
